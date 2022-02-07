@@ -60,6 +60,7 @@ loadQuiz();
 //After submmition
 
 function loadQuiz() {
+  deselectAnswers();
   const currentQuizData = quizData[currentQuiz];
   questionEl.innerText = currentQuizData.question;
 
@@ -67,4 +68,22 @@ function loadQuiz() {
   bLabel.innerText = currentQuizData.b;
   cLabel.innerText = currentQuizData.c;
   dLabel.innerText = currentQuizData.d;
+}
+
+//deselectAnswers function
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
+
+//getselected
+
+function getselected() {
+  let answer;
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+  return answer;
 }
