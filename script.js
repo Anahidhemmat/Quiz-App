@@ -54,3 +54,17 @@ const submitBtn = document.querySelector("#submit");
 
 let currentQuiz = 0;
 let score = 0;
+
+loadQuiz();
+
+//After submmition
+
+function loadQuiz() {
+  const currentQuizData = quizData[currentQuiz];
+  questionEl.innerText = currentQuizData.question;
+
+  aLabel.innerText = currentQuizData.a;
+  bLabel.innerText = currentQuizData.b;
+  cLabel.innerText = currentQuizData.c;
+  dLabel.innerText = currentQuizData.d;
+}
