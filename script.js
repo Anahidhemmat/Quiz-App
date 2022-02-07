@@ -1,13 +1,5 @@
 const quizData = [
   {
-    question: "Which language runs in a web browser?",
-    a: "Java",
-    b: "C",
-    c: "Python",
-    d: "Javacript",
-    correct: "d ",
-  },
-  {
     question: "What is the most used programming language?",
     a: "Java",
     b: "C",
@@ -38,6 +30,14 @@ const quizData = [
     c: "1994",
     d: "none of the above",
     correct: "b",
+  },
+  {
+    question: "Which language runs in a web browser?",
+    a: "Java",
+    b: "C",
+    c: "Python",
+    d: "Javacript",
+    correct: "d ",
   },
 ];
 
@@ -87,3 +87,29 @@ function getselected() {
   });
   return answer;
 }
+
+//submit event listener
+
+submitBtn.addEventListener("click", function () {
+  const answer = getselected();
+
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+    currentQuiz++;
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerText = `You answered correctly at ${score}/${quizData.length} questions.`;
+      quiz.style.fontSize = "1.5rem";
+      quiz.style.textAlign = "center";
+      const reloadBtn = document.createElement("button");
+      quiz.append(reloadBtn);
+      reloadBtn.innerText = "Reload";
+      reloadBtn.addEventListener("click", () => {
+        location.reload();
+      });
+    }
+  }
+});
